@@ -80,6 +80,29 @@ function bodyAcrollingToggle() {
     d.body.classList.toggle("hidden-scrolling");
 }
 
+// about me section
+(() => {
+    const textoCompleto = document.getElementById("texto-completo"),
+    textoRecortado = document.getElementById("texto-recortado"),
+    show_more = document.getElementById("show-more"),
+    show_less = document.getElementById("show-less");
+
+    const onClickShowMore = () => {
+        textoRecortado.style.display = "none"
+        textoCompleto.style.display = "block"
+    }
+
+    const onClickShowLess = () => {
+        textoCompleto.style.display = "none"
+        textoRecortado.style.display = "block"
+    }
+
+    show_more.addEventListener('click', onClickShowMore);
+    
+    show_less.addEventListener('click', onClickShowLess);
+
+})();
+
 // portafolio filter and popup
 (() => {
 
@@ -205,49 +228,6 @@ function bodyAcrollingToggle() {
             popup.scrollTo(0, projectDetailsContainer.offsetTop)
         }
     }
-})();
-
-// testimonial slider
-
-(() => {
-    const sliderContainer = d.querySelector(".testi-slider-container"),
-    slides = sliderContainer.querySelectorAll(".testi-item"),
-    slideWidth = sliderContainer.offsetWidth,
-    prevBtn = d.querySelector(".testi-slider-nav .prev"),
-    nextBtn = d.querySelector(".testi-slider-nav .next"),
-    activeSlide = sliderContainer.querySelector(".testi-item.active");
-    let slideIndex = Array.from(activeSlide.parentElement.children).indexOf(activeSlide);
-
-    slides.forEach((slide) => {
-        slide.style.width = slideWidth + "px";
-    });
-
-    sliderContainer.style.width = slideWidth * slides.length + "px";
-
-    nextBtn.addEventListener("click", () => {
-        if (slideIndex === slides.length - 1) {
-            slideIndex = 0;
-        }else {
-            slideIndex++;
-        }
-        slider();
-    });
-    
-    prevBtn.addEventListener("click", () => {
-        if (slideIndex === 0) {
-            slideIndex = slides.length - 1;
-        }else {
-            slideIndex--;
-        }
-        slider();
-    })
-    
-    function slider() {
-        sliderContainer.querySelector(".testi-item.active").classList.remove("active");
-        slides[slideIndex].classList.add("active");
-        sliderContainer.style.marginLeft = - (slideWidth * slideIndex) + "px";
-    }
-    slider();
 })();
 
 // hide all section except active 

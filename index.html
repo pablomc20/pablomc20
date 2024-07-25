@@ -3,20 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>Personal Portfolio Website</title>
+  <link rel="icon" type="image/x-icon" href="/css/img/icon-cat.png">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <!-- font awesome -->
   <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css"> -->
-  <script src="https://kit.fontawesome.com/da019b54c3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- main css -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css?v=1.0.2">
   <!-- responsive css -->
-  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css?v=1.0.1">
   <!-- default color skin -->
   <link rel="stylesheet" type="text/css" href="css/skins/color-4.css" class="alternate-style">
   <!-- style switcher -->
   <link rel="stylesheet" type="text/css" href="css/style-switcher.css">
+
+  <script src="js/languaje-config.js"></script>
+
 </head>
-<body class="dark">
+<body class="dark" data-languaje="en">
 
   <!-- preloader start -->
   <div class="preloader">
@@ -48,17 +52,16 @@
     <div class="close-nav-menu outer-shadow hover-in-shadow">&times;</div>
     <div class="nav-menu-inner">
       <ul>
-        <li><a href="#home" class="link-item inner-shadow active">home</a></li>
-        <li><a href="#about" class="link-item outer-shadow hover-in-shadow">about</a></li>
-        <li><a href="#services" class="link-item outer-shadow hover-in-shadow">services</a></li>
-        <li><a href="#portafolio" class="link-item outer-shadow hover-in-shadow">portafolio</a></li>
-        <li><a href="#testimonial" class="link-item outer-shadow hover-in-shadow">testimonial</a></li>
-        <li><a href="#contact" class="link-item outer-shadow hover-in-shadow">contact</a></li>
+        <li><a href="#home" class="link-item inner-shadow active" ttl_home="true"></a></li>
+        <li><a href="#about" class="link-item outer-shadow hover-in-shadow" ttl_about="true"></a></li>
+        <li><a href="#services" class="link-item outer-shadow hover-in-shadow" ttl_services="true"></a></li>
+        <li><a href="#portafolio" class="link-item outer-shadow hover-in-shadow" ttl_portf="true"></a></li>
+        <li><a href="#contact" class="link-item outer-shadow hover-in-shadow" ttl_contact="true"></a></li>
       </ul>
     </div>
 
     <!-- copyright text -->
-    <p class="copyright-text">&copy; 2021 developed by pablo</p>
+    <p class="copyright-text" ttl_copyright="true"></p>
   </nav>
   <div class="fade-out-effect"></div>
   <!-- menu end -->
@@ -120,14 +123,14 @@
     <div class="container">
       <div class="row full-screen align-items-center">
         <div class="home-text">
-          <p>Hello</p>
-          <h2>I'm Pablo Cruz</h2>
-          <h1>Developer Full Stack (Back-end)</h1>
-          <a href="#about" class="link-item outer-shadow hover-in-shadow btn-l">More About Me</a>
+          <p ttl_welcome="true"></p>
+          <h2 ttl_about_name="true"></h2>
+          <h1 ttl_place="true"></h1>
+          <a ttl_btn_about_me="true" href="#about" class="link-item outer-shadow hover-in-shadow btn-l"></a>
         </div>
         <div class="home-img">
           <div class="img-box inner-shadow">
-            <img src="https://i.ibb.co/fq40wMZ/profile-pic.png" class="outer-shadow" alt="profile-pic" border="0">
+            <img src="css/img/profile-user.jpg" class="outer-shadow" alt="profile-user" border="0">
           </div>
         </div>
       </div>
@@ -140,7 +143,8 @@
     <div class="container">
       <div class="row">
         <div class="section-title">
-          <h2 data-heading="main info">About me</h2>
+          <h3 ttl_main_info="true"></h3>
+          <h2 ttl_about_me="true"></h2>
         </div>
       </div>
 
@@ -148,22 +152,45 @@
       <div class="row">
         <div class="about-img">
           <div class="img-box inner-shadow">
-            <img src="https://i.ibb.co/fq40wMZ/profile-pic.png" class="outer-shadow" alt="profile-pic">
+            <img src="css/img/profile-pic.jpg" class="outer-shadow" alt="profile-pic">
           </div>
           <!-- social links start -->
           <div class="social-links">
-            <a href="https://github.com/pablomc20" target="_blank" rel="noopener noreferrer" class="outer-shadow hover-in-shadow"><i class="fab fa-github"></i></a>
-            <a href="" class="outer-shadow hover-in-shadow"><i class="fab fa-linkedin-in"></i></a>
-            <a href="" class="outer-shadow hover-in-shadow"><i class="fab fa-facebook-f"></i></a>
-            <a href="" class="outer-shadow hover-in-shadow"><i class="far fa-envelope"></i></a>
+            <a href="https://github.com/pablomc20" target="_blank" class="outer-shadow hover-in-shadow"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/pablo-cruz-marquez-08a277132/" target="_blank" class="outer-shadow hover-in-shadow"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/PablinCM/" target="_blank" class="outer-shadow hover-in-shadow"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:pablocm1747@gmail.com" target="_blank" class="outer-shadow hover-in-shadow"><i class="far fa-envelope"></i></a>
           </div>
           <!-- social links end -->
         </div>
         <div class="about-info">
-          <p><span>Hi! My name is Pablo Cruz. I am a Web Developer Full Stack (Backe-End). </span>I am currently looking for a job in which I can apply my skills learned in software development, in addition to continuing to learn new technologies.</p>
-          <p>I stand out for my ability to solve mathematical and logic problems, I have work experience, I like teamwork and difficult challenges, I am an educated, respectful and very responsible person.</p>
-          <a href="cv.pdf" class="btn-l outer-shadow hover-in-shadow">Downloead CV</a>
-          <a href="#contact" class="link-item btn-l outer-shadow hover-in-shadow">Hire me</a>
+          <div id="texto-completo" class="texto-completo">
+
+            <p><span ttl_section_text1="true"></span></p>
+            <p><span ttl_section_text2="true"></span></p>
+            
+            <br> 
+            <p ttl_section_text3="true"></p>
+            <p ttl_section_text4="true"></p>
+            <p ttl_section_text5="true"></p>
+            <p ttl_section_text6="true"></p>
+            <p ttl_section_text7="true"></p>
+            
+            <a id="show-less" href="#texto-completo" ttl_btn_show_less="true"></a>
+          </div>
+          <div id="texto-recortado" class="texto-recortado">
+            <p><span ttl_section_text1="true"></span></p>
+            <p><span ttl_section_text2="true"></span></p>
+
+            <br> 
+            <p ttl_section_text3="true"></p>
+            <p ttl_section_text4="true"></p>
+
+            <a id="show-more" href="#texto-completo" ttl_btn_show_more="true"></a>
+          </div>
+
+          <a href="cv.pdf" class="btn-l outer-shadow hover-in-shadow" ttl_btn_download_cv="true"></a>
+          <a href="#contact" class="link-item btn-l outer-shadow hover-in-shadow" ttl_btn_here_me="true"></a>
         </div>
       </div>
       <!-- about me end -->
@@ -171,9 +198,9 @@
       <!-- about tabs start -->
       <div class="row">
         <div class="about-tabs">
-          <span class="tab-item outer-shadow active" data-target=".skills">skills</span>
-          <span class="tab-item" data-target=".experience">experience</span>
-          <span class="tab-item" data-target=".education">education</span>
+          <span class="tab-item outer-shadow active" data-target=".skills" ttl_skills="true"></span>
+          <span class="tab-item" data-target=".experience" ttl_experience="true"></span>
+          <span class="tab-item" data-target=".education" ttl_education="true"></span>
         </div>
       </div>
       <!-- about tabs end -->
@@ -186,8 +213,8 @@
             <div class="skill-item">
               <p>PHP</p>
               <div class="progress inner-shadow">
-                <div class="progress-bar" style="width: calc(70% - 14px)">
-                  <span>70%</span>
+                <div class="progress-bar" style="width: calc(75% - 14px)">
+                  <span>75%</span>
                 </div>
               </div>
             </div>
@@ -206,35 +233,38 @@
             <div class="skill-item">
               <p>JAVA</p>
               <div class="progress inner-shadow">
-                <div class="progress-bar" style="width: calc(75% - 14px)">
-                  <span>65%</span>
+                <div class="progress-bar" style="width: calc(83% - 14px)">
+                  <span>83%</span>
                 </div>
               </div>
             </div>
             <!-- skill item end -->
+            
             <!-- skill item start -->
             <div class="skill-item">
-              <p>HTML</p>
+              <p>Python</p>
               <div class="progress inner-shadow">
-                <div class="progress-bar" style="width: calc(90% - 14px)">
-                  <span>90%</span>
+                <div class="progress-bar" style="width: calc(70% - 14px)">
+                  <span>70%</span>
                 </div>
               </div>
             </div>
             <!-- skill item end -->
+
             <!-- skill item start -->
             <div class="skill-item">
               <p>MySQL</p>
               <div class="progress inner-shadow">
-                <div class="progress-bar" style="width: calc(80% - 14px)">
-                  <span>80%</span>
+                <div class="progress-bar" style="width: calc(78% - 14px)">
+                  <span>78%</span>
                 </div>
               </div>
             </div>
             <!-- skill item end -->
+
             <!-- skill item start -->
             <div class="skill-item">
-              <p>Inglés</p>
+              <p ttl_skill_languaje="true"></p>
               <div class="progress inner-shadow">
                 <div class="progress-bar" style="width: calc(45% - 14px)">
                   <span>45%</span>
@@ -257,11 +287,22 @@
                 <div class="timeline-item">
                   <div class="timeline-item-inner outer-shadow">
                     <i class="fas fa-briefcase icon"></i>
-                    <span>Jan, 2021 - Present</span>
-                    <h3>Junior Developer</h3>
-                    <h4>Xiimbal S de RL de CV, Tulancingo, Hidalgo</h4>
-                    <p>Management for the design, implementation and maintenance of web applications.
-                      Using tools like Bootstrap4, JQuery, AJAX, PHP, JavaScript, MySQL</p>
+                    <span>Feb, 2022 - Feb, 2024</span>
+                    <h3 ttl_section_work1_tit="true"></h3>
+                    <h4 ttl_section_work1_sub="true"></h4>
+                    <p ttl_section_work1_des="true"></p>
+                  </div>
+                </div>
+                <!-- timeline item end -->
+
+                <!-- timeline item start -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class="fas fa-briefcase icon"></i>
+                    <span>Jan, 2021 - Feb, 2022</span>
+                    <h3 ttl_section_work2_tit="true"></h3>
+                    <h4 ttl_section_work2_sub="true"></h4>
+                    <p ttl_section_work2_des="true"></p>
                   </div>
                 </div>
                 <!-- timeline item end -->
@@ -270,22 +311,10 @@
                 <div class="timeline-item">
                   <div class="timeline-item-inner outer-shadow">
                     <i class="fas fa-briefcase icon"></i>
-                    <span>Jan, 2020 - Apr, 2020</span>
-                    <h3>Systems Assistant</h3>
-                    <h4>Hotel Grand Palladium, Solidaridad, Quintana Roo</h4>
-                    <p>Technical support and maintenance; development of a web computer system for the management of bracelets at the reception.</p>
-                  </div>
-                </div>
-                <!-- timeline item end -->     
-                
-                <!-- timeline item start -->
-                <div class="timeline-item">
-                  <div class="timeline-item-inner outer-shadow">
-                    <i class="fas fa-briefcase icon"></i>
                     <span>May, 2018 - Aug, 2019</span>
-                    <h3>Full Stack Developer</h3>
-                    <h4>Xiimbal S de RL de CV, Tulancingo, Hidalgo</h4>
-                    <p>Modification and improvements in web applications; Backend and Frontend development; modification and improvements in databases.</p>
+                    <h3 ttl_section_work3_tit>Full Stack Developer</h3>
+                    <h4 ttl_section_work3_sub>Xiimbal S de RL de CV, Tulancingo, Hidalgo</h4>
+                    <p ttl_section_work3_des>Modification and improvements in web applications; Backend and Frontend development; modification and improvements in databases.</p>
                   </div>
                 </div>
                 <!-- timeline item end -->
@@ -362,7 +391,7 @@
     <div class="container">
       <div class="row">
         <div class="section-title">
-          <h2 data-heading="Services">What i do</h2>
+          <h2 data-heading="Services" ttl_what_do="true"></h2>
         </div>
       </div>
       <div class="row">
@@ -372,8 +401,8 @@
             <div class="icon inner-shadow">
               <i class="fas fa-mobile-alt"></i>
             </div>
-            <h3>Responsive Design</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_responsive_title="true"></h3>
+            <p ttl_section_responsive="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -383,8 +412,8 @@
             <div class="icon inner-shadow">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3>Web Design</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_design_title="true"></h3>
+            <p ttl_section_design="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -392,10 +421,10 @@
         <div class="service-item">
           <div class="service-item-inner outer-shadow">
             <div class="icon inner-shadow">
-              <i class="fas fa-palette"></i>
+              <i class="fa-solid fa-database"></i>
             </div>
-            <h3>Graphic Design</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_database_title="true"></h3>
+            <p ttl_section_database="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -405,8 +434,8 @@
             <div class="icon inner-shadow">
               <i class="fas fa-code"></i>
             </div>
-            <h3>Clean code</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_code_title="true"></h3>
+            <p ttl_section_code="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -414,10 +443,10 @@
         <div class="service-item">
           <div class="service-item-inner outer-shadow">
             <div class="icon inner-shadow">
-              <i class="fas fa-search"></i>
+              <i class="fa-solid fa-gears"></i>
             </div>
-            <h3>SEO Marketing</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_apis_title="true"></h3>
+            <p ttl_section_apis="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -425,10 +454,10 @@
         <div class="service-item">
           <div class="service-item-inner outer-shadow">
             <div class="icon inner-shadow">
-              <i class="fas fa-bullhorn"></i>
+              <i class="fa-brands fa-git-alt"></i>
             </div>
-            <h3>Great support</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident dolorem quaerat labore eos consectetur voluptatibus nemo iusto libero. Optio nisi consequatur fugit, pariatur porro sapiente architecto eligendi vel deleniti!</p>
+            <h3 ttl_section_version_title="true"></h3>
+            <p ttl_section_version="true"></p>
           </div>
         </div>
         <!-- service item end -->
@@ -442,7 +471,7 @@
     <div class="container">
       <div class="row">
         <div class="section-title">
-          <h2 data-heading="portafolio">Latest Works</h2>
+          <h2 data-heading="portafolio" ttl_lates_work="true">Latest Works</h2>
         </div>
       </div>
 
@@ -576,63 +605,12 @@
   </section>
   <!-- portafolio section end -->
 
-  <!-- testimonial section start -->
-  <section class="testimonial-section section" id="testimonial">
-    <div class="container">
-      <div class="row">
-        <div class="section-title">
-          <h2 data-heading="testimonial">Client Speak</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="testi-box">
-          <div class="testi-slider outer-shadow">
-            <div class="testi-slider-container">
-              <!-- testi item start -->
-              <div class="testi-item">
-                <i class="fas fa-quote-left left"></i>
-                <i class="fas fa-quote-right right"></i>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ab velit distinctio, aut fuga debitis laudantium quidem natus dolor aperiam rerum ratione, deserunt earum expedita tempora dolorum deleniti facilis eos.</p>
-                <img src="https://i.ibb.co/4KpD2SH/1.png" alt="testimonial">
-                <span>Raj Himachal</span>
-              </div>
-              <!-- testi item end -->
-              <!-- testi item start -->
-              <div class="testi-item active">
-                <i class="fas fa-quote-left left"></i>
-                <i class="fas fa-quote-right right"></i>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ab velit distinctio, aut fuga debitis laudantium quidem natus dolor aperiam rerum ratione, deserunt earum expedita tempora dolorum deleniti facilis eos.</p>
-                <img src="https://i.ibb.co/4KpD2SH/1.png"alt="testimonial">
-                <span>juanito menganito</span>
-              </div>
-              <!-- testi item end -->
-              <!-- testi item start -->
-              <div class="testi-item">
-                <i class="fas fa-quote-left left"></i>
-                <i class="fas fa-quote-right right"></i>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ab velit distinctio, aut fuga debitis laudantium quidem natus dolor aperiam rerum ratione, deserunt earum expedita tempora dolorum deleniti facilis eos.</p>
-                <img src="https://i.ibb.co/4KpD2SH/1.png" alt="testimonial">
-                <span>martir benjamin</span>
-              </div>
-              <!-- testi item end -->
-             </div>
-          </div>
-          <div class="testi-slider-nav">
-            <span class="prev outer-shadow hover-in-shadow"><i class="fas fa-angle-left"></i></span>
-            <span class="next outer-shadow hover-in-shadow"><i class="fas fa-angle-right"></i></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- testimonial section end -->
-
   <!-- contact section start -->
   <section class="contact-section section" id="contact">
     <div class="container">
       <div class="row">
         <div class="section-title">
-          <h2 data-heading="contact">Get in touch</h2>
+          <h2 data-heading="contact" ttl_get_touch="true"></h2>
         </div>
       </div>
       <div class="row">
@@ -640,8 +618,8 @@
         <div class="contact-item">
           <div class="contact-item-inner outer-shadow">
             <i class="fas fa-phone"></i>
-            <span>Phone</span>
-            <p>984 21 84 388</p>
+            <span ttl_contact_phone="true">Phone</span>
+            <a href="tel:+527751050069">775 105 00 69</a>
           </div>
         </div>
         <!-- contact item end -->
@@ -649,8 +627,8 @@
         <div class="contact-item">
           <div class="contact-item-inner outer-shadow">
             <i class="fas fa-envelope"></i>
-            <span>Email</span>
-            <p>pablocm@gmail.com</p>
+            <span ttl_contact_email="true">Email</span>
+            <a href="mailto:pablocm177@gmail.com?subject=Asunto%20del%20correo&body=Hola,%0Aeste%20es%20un%20mensaje%20con%20un%20salto%20de%20línea.">pablocm1747@gmail.com</a>
           </div>
         </div>
         <!-- contact item end -->
@@ -658,8 +636,8 @@
         <div class="contact-item">
           <div class="contact-item-inner outer-shadow">
             <i class="fas fa-location-arrow"></i>
-            <span>Location</span>
-            <p>México, Hidalgo</p>
+            <span ttl_contact_location="true">Location</span>
+            <p>México, Ciudad de México, Tlalpan</p>
           </div>
         </div>
         <!-- contact item end -->
@@ -672,19 +650,19 @@
             <div class="row">
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Name" class="input-control" name="name">
+                  <input type="text" placeholder="Name" class="input-control" name="name" ttl_form_name="true">
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Email" class="input-control" name="mail">
+                  <input type="text" placeholder="Email" class="input-control" name="mail" ttl_form_email="true">
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Subject" class="input-control" name="subject">
+                  <input type="text" placeholder="Subject" class="input-control" name="subject" ttl_form_subject="true">
                   <input type="hidden" name="_subject" value="New submission!">
                 </div>
               </div>
               <div class="w-50">
                  <div class="input-group outer-shadow hover-in-shadow">
-                   <textarea class="input-control" placeholder="Message" name="message"></textarea>
+                   <textarea class="input-control" placeholder="Message" name="message" ttl_form_message="true"></textarea>
                  </div>
               </div>
             </div>
@@ -692,7 +670,9 @@
             <input type="hidden" name="_captcha" value="false">
             <div class="row">
               <div class="submit-btn">
-                <button type="submit" class="btn-l outer-shadow hover-in-shadow">Send Message</button>
+                <button type="submit" disabled class="btn-l outer-shadow hover-in-shadow" ttl_form_submit="true">
+                  Send Message
+                </button>
               </div>
             </div>
           </form>
@@ -744,6 +724,9 @@
     </div>
     <div class="day-night s-icon outer-shadow hover-in-shadow">
       <i class="fas"></i>
+    </div>
+    <div class="icon-languaje s-icon outer-shadow hover-in-shadow">
+      <i class="fa-solid fa-language"></i>
     </div>
 
     <h4>Theme Colors</h4>
