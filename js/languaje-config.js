@@ -1,6 +1,9 @@
 // Función para cargar el contenido del JSON en el DOM
 function cargarContenido(idioma) {
 
+    // Almacenar el lenguaje seleccionado
+    localStorage.setItem("language", idioma);
+
     // Realiza una solicitud HTTP para obtener el archivo JSON
     var solicitud = new XMLHttpRequest();
     solicitud.open('GET', 'resources/languaje-list.json', true);
@@ -91,9 +94,11 @@ async function sendMessageAsync(msg) {
 // Ejemplo de uso: cargar el contenido en inglés al cargar la página
 window.onload = function() {
     const body = document.body;
-    console.log(body.dataset.languaje);
-
-    cargarContenido(body.dataset.languaje);
+    
+    if (localStorage.getItem("language")) 
+        cargarContenido(localStorage.getItem("language"));
+    else
+        cargarContenido(body.dataset.languaje);
 
     const btn_languaje = document.querySelector('.fa-language');
 
@@ -106,11 +111,11 @@ window.onload = function() {
         const EN = "en";
         if (body.dataset.languaje === EN && !tareaEnProgreso) {
             sendMessageAsync("Cambio de idioma a Español")
-            body.dataset.languaje = "es";
+            body.dataset.languaje = ES;
             return ES;
         }else if (body.dataset.languaje === ES && !tareaEnProgreso) {
             sendMessageAsync("English Language has been selected")
-            body.dataset.languaje = "en";
+            body.dataset.languaje = EN;
             return EN;
 
         }
