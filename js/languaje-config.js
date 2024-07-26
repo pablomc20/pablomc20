@@ -89,14 +89,16 @@ async function sendMessageAsync(msg) {
     }
 }
 
-
+function cargarContenidoOfCache() {
+    cargarContenido(localStorage.getItem("language"));
+    body.dataset.languaje = localStorage.getItem("language");
+}
 
 // Ejemplo de uso: cargar el contenido en inglés al cargar la página
 window.onload = function() {
-    const body = document.body;
     
     if (localStorage.getItem("language")) 
-        cargarContenido(localStorage.getItem("language"));
+        cargarContenidoOfCache();
     else
         cargarContenido(body.dataset.languaje);
 
