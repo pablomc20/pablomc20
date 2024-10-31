@@ -110,6 +110,7 @@ window.onload = function() {
 
     let toggleLanguaje = () => {
         const ES = "es";
+        
         const EN = "en";
         if (body.dataset.languaje === EN && !tareaEnProgreso) {
             sendMessageAsync("Cambio de idioma a Español")
