@@ -1,8 +1,8 @@
 // navigation menu
 (() => {
     const hamburegrBtn = d.querySelector(".hamburger-btn"),
-    navMenu = d.querySelector(".nav-menu"),
-    closeNavBtn = navMenu.querySelector(".close-nav-menu");
+        navMenu = d.querySelector(".nav-menu"),
+        closeNavBtn = navMenu.querySelector(".close-nav-menu");
 
     hamburegrBtn.addEventListener("click", showNavmenu);
     closeNavBtn.addEventListener("click", hideNavmenu);
@@ -28,7 +28,7 @@
             if (event.target.hash !== "") {
                 event.preventDefault();
                 const hash = event.target.hash;
-                
+
                 d.querySelector(".section.active").classList.add("hide");
                 d.querySelector(".section.active").classList.remove("active");
                 d.querySelector(hash).classList.add("active");
@@ -39,10 +39,10 @@
                     event.target.classList.add("active", "inner-shadow");
                     event.target.classList.remove("outer-shadow", "hover-in-shadow");
                     hideNavmenu();
-                }else {
+                } else {
                     let navItems = navMenu.querySelectorAll(".link-item");
                     navItems.forEach((item) => {
-                        if (hash === item.hash){
+                        if (hash === item.hash) {
                             item.classList.add("active", "inner-shadow");
                             item.classList.remove("outer-shadow", "hover-in-shadow");
                         }
@@ -58,12 +58,12 @@
 })();
 
 // about tabs section
-(() =>  {
+(() => {
     const aboutSection = d.querySelector(".about-section"),
         tabsContainer = d.querySelector(".about-tabs");
-    
+
     tabsContainer.addEventListener("click", (event) => {
-        if (event.target.classList.contains("tab-item") && 
+        if (event.target.classList.contains("tab-item") &&
             !event.target.classList.contains("active")) {
             const target = event.target.getAttribute("data-target");
 
@@ -83,9 +83,9 @@ function bodyAcrollingToggle() {
 // about me section
 (() => {
     const textoCompleto = document.getElementById("texto-completo"),
-    textoRecortado = document.getElementById("texto-recortado"),
-    show_more = document.getElementById("show-more"),
-    show_less = document.getElementById("show-less");
+        textoRecortado = document.getElementById("texto-recortado"),
+        show_more = document.getElementById("show-more"),
+        show_less = document.getElementById("show-less");
 
     const onClickShowMore = () => {
         textoRecortado.style.display = "none"
@@ -98,7 +98,7 @@ function bodyAcrollingToggle() {
     }
 
     show_more.addEventListener('click', onClickShowMore);
-    
+
     show_less.addEventListener('click', onClickShowLess);
 
 })();
@@ -118,17 +118,17 @@ function bodyAcrollingToggle() {
     let itemIndex, slideIndex, screenshots;
 
     filterContainer.addEventListener("click", (event) => {
-        if(event.target.classList.contains("filter-item") && 
-        !event.target.classList.contains("active")) {
+        if (event.target.classList.contains("filter-item") &&
+            !event.target.classList.contains("active")) {
             filterContainer.querySelector(".active").classList.remove("outer-shadow", "active");
             event.target.classList.add("active", "outer-shadow");
 
             const target = event.target.getAttribute("data-target");
-            portafolioItems.forEach((item) =>  {
+            portafolioItems.forEach((item) => {
                 if (target === item.getAttribute("data-category") || target === "all") {
                     item.classList.remove("hide");
                     item.classList.add("show");
-                }else {
+                } else {
                     item.classList.remove("show");
                     item.classList.add("hide");
                 }
@@ -137,7 +137,7 @@ function bodyAcrollingToggle() {
     })
 
     poratfolioItemsContainer.addEventListener("click", (event) => {
-        if(event.target.closest(".portafolio-item-inner")) {
+        if (event.target.closest(".portafolio-item-inner")) {
             const portafolioItem = event.target.closest(".portafolio-item-inner").parentElement;
             itemIndex = Array.from(portafolioItem.parentElement.children).indexOf(portafolioItem);
             screenshots = portafolioItems[itemIndex].querySelector(".portafolio-item-img img").getAttribute("data-screenshots");
@@ -174,22 +174,22 @@ function bodyAcrollingToggle() {
         popupImg.onload = () => {
             popup.querySelector(".pp-loader").classList.remove("active");
         }
-        popup.querySelector(".pp-counter").innerHTML = (slideIndex+1) + " of " + screenshots.length;
+        popup.querySelector(".pp-counter").innerHTML = (slideIndex + 1) + " of " + screenshots.length;
     }
 
     nextBtn.addEventListener("click", () => {
         if (slideIndex === screenshots.length - 1) {
             slideIndex = 0;
-        }else {
+        } else {
             slideIndex++;
         }
         popupSlideShow();
     });
 
     prevBtn.addEventListener("click", () => {
-        if(slideIndex === 0) {
+        if (slideIndex === 0) {
             slideIndex = screenshots.length - 1;
-        }else {
+        } else {
             slideIndex--;
         }
         popupSlideShow();
@@ -201,7 +201,7 @@ function bodyAcrollingToggle() {
             return;
         }
         projectDetailsBtn.style.display = "block";
-        
+
         const details = portafolioItems[itemIndex].querySelector(".portafolio-item-details").innerHTML;
         popup.querySelector(".pp-project-details").innerHTML = details;
         const title = portafolioItems[itemIndex].querySelector(".portafolio-item-title").innerHTML;
@@ -220,7 +220,7 @@ function bodyAcrollingToggle() {
             projectDetailsBtn.querySelector("i").classList.add("fa-plus");
             projectDetailsContainer.classList.remove("active");
             projectDetailsContainer.style.maxHeight = 0 + "px";
-        }else {
+        } else {
             projectDetailsBtn.querySelector("i").classList.remove("fa-plus");
             projectDetailsBtn.querySelector("i").classList.add("fa-minus");
             projectDetailsContainer.classList.add("active");
@@ -240,9 +240,90 @@ function bodyAcrollingToggle() {
     });
 })();
 
-window.addEventListener("load", () => {
+// Configuración de partículas
+function initParticles() {
+    // const skinColor = "#fb839e";
+    const rootStyles = getComputedStyle(document.documentElement);
+    const skinColor = rootStyles.getPropertyValue('--skin-color').trim();
+
+    // Limpia el contenedor si ya hay un canvas
+    document.getElementById("particles-js").innerHTML = "";
+
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: skinColor
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: skinColor,
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
+}
+
+window.addEventListener('load', () => {
     d.querySelector(".preloader").classList.add("fade-out");
     setTimeout(() => {
         d.querySelector(".preloader").style.display = "none";
     }, 600);
-})
+    initParticles();
+});

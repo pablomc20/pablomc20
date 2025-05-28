@@ -62,4 +62,11 @@ colorBtn.addEventListener("click", (event) => {
     colorSelected = event.target.getAttribute("data-color");
     localStorage.setItem("color", colorSelected);
     altarnateStyles.href = `css/skins/color-${colorSelected}.css`;
+    
+    // Reiniciar las partículas usando la función global
+    setTimeout(() => {
+        if (typeof initParticles === 'function') {
+            initParticles();
+        }
+    }, 100);
 });
