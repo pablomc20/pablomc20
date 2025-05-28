@@ -1,4 +1,5 @@
 FROM nginx:alpine
+LABEL org.opencontainers.image.source https://github.com/pablomc20/pablomc20
 
 # Copiar archivos estáticos a nginx
 COPY . /usr/share/nginx/html
