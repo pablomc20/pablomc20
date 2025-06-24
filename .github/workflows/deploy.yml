@@ -34,7 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Login to GitHub Container Registry
+      - name: Checkout code on runner # Necesario para copiar el docker-compose.yml
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry # Necesario para que el VPS pueda hacer docker pull
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -48,21 +51,35 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Stop and remove existing container
+      # Paso: Copiar el docker-compose.yml actualizado al VPS
+      # Asegura que el VPS siempre tenga la versión que referencia la imagen
+      - name: Copy docker-compose.yml to VPS
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker stop pablomc20 || true"
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker rm pablomc20 || true"
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no docker-compose.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/developer/apps/frontend/pablomc20/docker-compose.yml
 
-      - name: Pull and run new image
+      - name: Deploy via SSH with Docker Compose
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker pull ghcr.io/${{ github.repository }}:latest"
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker run -d --name pablomc20 -p 8081:80 ghcr.io/${{ github.repository }}:latest"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          # Navega al directorio de tu proyecto donde está docker-compose.yml
+          cd /home/developer/apps/frontend/pablomc20
 
-      - name: Deploy via SSH
-        run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd /home/developer/apps/frontend/pablomc20
-            git pull origin main
-            docker-compose down
-            docker-compose up -d --build
+          # Detiene y elimina los servicios existentes definidos en docker-compose.yml.
+          # Esto liberará el puerto 8081 antes de que se intente levantar el nuevo.
+          echo "Stopping and removing existing Docker Compose services..."
+          docker compose down || true 
+
+          # Limpia cualquier recurso Docker no utilizado.
+          echo "Pruning old Docker images and containers..."
+          docker system prune -f
+
+          # Descarga la imagen más reciente desde GitHub Container Registry.
+          echo "Pulling the latest image from GHCR.IO..."
+          docker pull ghcr.io/${{ github.repository }}:latest
+
+          # Levanta los servicios. Docker Compose detectará la nueva imagen y reemplazará el contenedor antiguo.
+          # Ya NO usamos --build aquí porque la imagen ya está pre-construida.
+          echo "Starting Docker Compose services..."
+          docker compose up -d --remove-orphans 
+          
+          echo "Deployment complete!"
           EOF

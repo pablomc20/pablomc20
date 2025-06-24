@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: ghcr.io/${{ github.repository }}:latest # <--- ¡CAMBIO AQUÍ!
+    container_name: pablomc20_web
     ports:
       - "8081:80"
     volumes:
