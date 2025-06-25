@@ -55,9 +55,9 @@ jobs:
         run: |
           scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no docker-compose.yml developer@${{ secrets.VPS_HOST }}:/home/developer/apps/frontend/pablomc20/docker-compose.yml
 
-      - name: Deploy via SSH with Docker Compose
+      - name: Deploy via SSH and Docker Compose
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no developer@${{ secrets.VPS_HOST }} << 'EOF'
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             cd /home/developer/apps/frontend/pablomc20
             echo "Deteniendo servicios..."
             docker compose down || true
