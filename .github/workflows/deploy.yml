@@ -56,7 +56,7 @@ jobs:
       - name: Pull and run new image
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker pull ghcr.io/${{ github.repository }}:latest"
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker run -d --name pablomc20 -p 80:80 ghcr.io/${{ github.repository }}:latest"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "docker run -d --name pablomc20 -p 8081:80 ghcr.io/${{ github.repository }}:latest"
 
       - name: Deploy via SSH
         run: |
