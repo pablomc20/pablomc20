@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: ghcr.io/pablomc20/pablomc20:latest  # <-- Usa la imagen ya publicada
     ports:
       - "8081:80"
-    volumes:
-      - .:/usr/share/nginx/html
     restart: always
