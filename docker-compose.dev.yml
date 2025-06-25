@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    volumes:
+      - .:/usr/share/nginx/html
+    environment:
+      - ENV=development

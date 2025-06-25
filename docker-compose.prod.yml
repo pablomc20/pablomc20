@@ -1,0 +1,5 @@
+services:
+  web:
+    image: ghcr.io/pablomc20/pablomc20:latest
+    environment:
+      - ENV=production

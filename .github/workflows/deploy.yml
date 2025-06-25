@@ -53,16 +53,16 @@ jobs:
 
       - name: Copy docker-compose.yml to VPS
         run: |
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no docker-compose.yml developer@${{ secrets.VPS_HOST }}:/home/developer/apps/frontend/pablomc20/docker-compose.yml
+          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no docker-compose.yml docker-compose.prod.yml ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/apps/frontend/pablomc20/
 
       - name: Deploy via SSH and Docker Compose
         run: |
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             cd /home/developer/apps/frontend/pablomc20
             echo "Deteniendo servicios..."
-            docker-compose down || true
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml down || true
             echo "Actualizando imagen desde GHCR..."
-            docker-compose pull
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull
             echo "Iniciando servicios..."
-            docker-compose up -d --remove-orphans
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
           EOF
