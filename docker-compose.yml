@@ -2,8 +2,10 @@ version: '3.8'
 
 services:
   web:
-    image: ghcr.io/${{ github.repository }}:latest # <--- ¡CAMBIO AQUÍ!
+    image: ghcr.io/pablomc20/pablomc20:latest # <--- ¡CAMBIO AQUÍ!
     container_name: pablomc20_web
     ports:
       - "8081:80"
+    volumes:
+      - .:/usr/share/nginx/html
     restart: always

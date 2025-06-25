@@ -58,22 +58,11 @@ jobs:
       - name: Deploy via SSH with Docker Compose
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no developer@${{ secrets.VPS_HOST }} << 'EOF'
-            # Ensure the directory exists and the deploy user owns it
-            sudo mkdir -p /home/developer/apps/frontend/pablomc20
-            sudo chown -R developer:developer /home/developer/apps # Change ownership of the 'apps' directory and its contents
-            sudo chmod -R 755 /home/developer/apps # Ensure read/write for owner, read/execute for others
-
-            # Now, navigate and perform Docker Compose operations
             cd /home/developer/apps/frontend/pablomc20
-
-            # ... (rest of your docker compose commands) ...
-            echo "Stopping and removing existing Docker Compose services..."
-            docker compose down || true 
-            # ... (etc.) ...
+            echo "Deteniendo servicios..."
+            docker compose down || true
+            echo "Actualizando imagen desde GHCR..."
+            docker compose pull
+            echo "Iniciando servicios..."
+            docker compose up -d --remove-orphans
           EOF
-
-      # This 'Copy docker-compose.yml to VPS' step should remain as a separate SCP command
-      # because it runs from the GitHub Actions runner directly.
-      - name: Copy docker-compose.yml to VPS
-        run: |
-          scp -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no docker-compose.yml developer@${{ secrets.VPS_HOST }}:/home/developer/apps/frontend/pablomc20/docker-compose.yml
