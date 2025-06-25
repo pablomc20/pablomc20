@@ -60,9 +60,9 @@ jobs:
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             cd /home/developer/apps/frontend/pablomc20
             echo "Deteniendo servicios..."
-            docker compose down || true
+            docker-compose down || true
             echo "Actualizando imagen desde GHCR..."
-            docker compose pull
+            docker-compose pull
             echo "Iniciando servicios..."
-            docker compose up -d --remove-orphans
+            docker-compose up -d --remove-orphans
           EOF
