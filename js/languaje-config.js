@@ -6,7 +6,7 @@ function cargarContenido(idioma) {
 
     // Realiza una solicitud HTTP para obtener el archivo JSON
     var solicitud = new XMLHttpRequest();
-    solicitud.open('GET', 'resources/languaje-list.json', true);
+    solicitud.open('GET', '../resources/languaje-list.json', true);
     solicitud.onreadystatechange = function() {
         if (solicitud.readyState === 4 && solicitud.status === 200) {
             // Parsea el JSON

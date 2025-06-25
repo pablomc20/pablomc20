@@ -18,7 +18,7 @@ const altarnateStyles = document.querySelector(".alternate-style");
 
 if (localStorage.getItem("color")) {
     colorSelected = localStorage.getItem("color");
-    altarnateStyles.href = `css/skins/color-${colorSelected}.css`;
+    altarnateStyles.href = `../css/skins/color-${colorSelected}.css`;
 }
 
 if (localStorage.getItem("theme")) {
@@ -61,7 +61,7 @@ const colorBtn = d.querySelector(".colors");
 colorBtn.addEventListener("click", (event) => {
     colorSelected = event.target.getAttribute("data-color");
     localStorage.setItem("color", colorSelected);
-    altarnateStyles.href = `css/skins/color-${colorSelected}.css`;
+    altarnateStyles.href = `../css/skins/color-${colorSelected}.css`;
     
     // Reiniciar las partículas usando la función global
     setTimeout(() => {
